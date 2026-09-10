@@ -1,0 +1,10 @@
+{
+  "name": "Project Bid Analyzer",
+  "version": "1.0.0",
+  "author": "justin.coogler@dynamicgrp.com",
+  "category": "business-development",
+  "tags": ["bidding", "proposals", "rfq", "rfp", "business-development", "scope", "risk"],
+  "difficulty": "intermediate",
+  "compatibility": "Claude Code v1.0+",
+  "lastUpdated": "2026-09-10"
+}

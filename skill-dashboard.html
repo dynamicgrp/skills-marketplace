@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Group Skills Marketplace</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { color: white; text-align: center; margin-bottom: 50px; }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1em; opacity: 0.95; }
+        .controls { display: flex; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        input[type="text"], select { padding: 10px 15px; border: none; border-radius: 5px; font-size: 1em; }
+        input[type="text"] { flex: 1; min-width: 250px; }
+        button { padding: 10px 20px; background: white; color: #667eea; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        button:hover { transform: translateY(-2px); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .skill-card { background: white; border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.15); }
+        .skill-icon { font-size: 2.5em; margin-bottom: 10px; }
+        .skill-card h3 { font-size: 1.3em; color: #333; margin-bottom: 8px; }
+        .skill-card p { color: #666; font-size: 0.95em; margin-bottom: 15px; }
+        .skill-meta { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.85em; font-weight: 500; }
+        .difficulty-beginner { background: #d4edda; color: #155724; }
+        .difficulty-intermediate { background: #fff3cd; color: #856404; }
+        .difficulty-advanced { background: #f8d7da; color: #721c24; }
+        .category-project-management { background: #d1ecf1; color: #0c5460; }
+        .category-business-development { background: #e7d4f5; color: #4a148c; }
+        .category-operations { background: #d4edda; color: #155724; }
+        .skill-links { display: flex; gap: 10px; }
+        .skill-links a { flex: 1; padding: 8px 12px; background: #f0f0f0; color: #333; text-decoration: none; border-radius: 4px; text-align: center; font-size: 0.9em; }
+        .skill-links a:hover { background: #e0e0e0; }
+        .no-results { text-align: center; color: white; padding: 40px; font-size: 1.1em; }
+        footer { text-align: center; color: white; margin-top: 60px; opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Dynamic Group Skills Marketplace</h1>
+            <p class="subtitle">Claude Code automation workflows for construction operations</p>
+        </header>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search skills by name or keyword...">
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="project-management">📋 Project Management</option>
+                <option value="business-development">📈 Business Development</option>
+                <option value="operations">🔧 Operations</option>
+            </select>
+            <select id="difficultyFilter">
+                <option value="">All Levels</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+            <button onclick="resetFilters()">Reset</button>
+        </div>
+
+        <div id="skillsContainer" class="skills-grid"></div>
+
+        <footer>
+            <p>💡 <strong>Tip:</strong> Install skills using INSTALLATION.md | Submit new skills via CONTRIBUTING.md</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Skills Marketplace v1.0.0 | Last Updated: 2026-09-10</p>
+        </footer>
+    </div>
+
+    <script>
+        const skills = [
+            { id: "construction-timeline", name: "Construction Timeline Analyzer", description: "Analyze project schedules, identify bottlenecks, and generate acceleration recommendations", category: "project-management", categoryLabel: "Project Management", difficulty: "intermediate", tags: ["scheduling", "timeline"], icon: "🗓️", links: { readme: "skills/construction-timeline/README.md", examples: "skills/construction-timeline/examples/" } },
+            { id: "project-bid-analyzer", name: "Project Bid Analyzer", description: "Break down RFQs and RFPs, identify scope gaps, and generate response checklists", category: "business-development", categoryLabel: "Business Development", difficulty: "intermediate", tags: ["bidding", "proposals"], icon: "📋", links: { readme: "skills/project-bid-analyzer/README.md", examples: "skills/project-bid-analyzer/examples/" } },
+            { id: "subcontractor-mgmt", name: "Subcontractor Management Helper", description: "Track vendor capacity, identify conflicts, and recommend optimal subcontractor assignments", category: "operations", categoryLabel: "Operations", difficulty: "beginner", tags: ["vendors", "capacity"], icon: "🔧", links: { readme: "skills/subcontractor-mgmt/README.md", examples: "skills/subcontractor-mgmt/examples/" } }
+        ];
+
+        function renderSkills(skillsToRender) {
+            const container = document.getElementById('skillsContainer');
+            if (skillsToRender.length === 0) {
+                container.innerHTML = '<div class="no-results">No skills found. Try adjusting your filters.</div>';
+                return;
+            }
+            container.innerHTML = skillsToRender.map(skill => `
+                <div class="skill-card">
+                    <div class="skill-icon">${skill.icon}</div>
+                    <h3>${skill.name}</h3>
+                    <p>${skill.description}</p>
+                    <div class="skill-meta">
+                        <span class="badge category-${skill.category}">${skill.categoryLabel}</span>
+                        <span class="badge difficulty-${skill.difficulty}">${skill.difficulty.charAt(0).toUpperCase() + skill.difficulty.slice(1)}</span>
+                    </div>
+                    <div class="skill-links">
+                        <a href="${skill.links.readme}" target="_blank">📖 Docs</a>
+                        <a href="${skill.links.examples}" target="_blank">💡 Examples</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterSkills() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const difficulty = document.getElementById('difficultyFilter').value;
+
+            const filtered = skills.filter(skill => {
+                const matchesSearch = skill.name.toLowerCase().includes(searchTerm) || skill.description.toLowerCase().includes(searchTerm) || skill.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                const matchesCategory = !category || skill.category === category;
+                const matchesDifficulty = !difficulty || skill.difficulty === difficulty;
+                return matchesSearch && matchesCategory && matchesDifficulty;
+            });
+
+            renderSkills(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('difficultyFilter').value = '';
+            renderSkills(skills);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', filterSkills);
+        document.getElementById('categoryFilter').addEventListener('change', filterSkills);
+        document.getElementById('difficultyFilter').addEventListener('change', filterSkills);
+        renderSkills(skills);
+    </script>
+</body>
+</html>

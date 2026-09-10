@@ -1,0 +1,10 @@
+{
+  "name": "Construction Timeline Analyzer",
+  "version": "1.0.0",
+  "author": "justin.coogler@dynamicgrp.com",
+  "category": "project-management",
+  "tags": ["scheduling", "project-management", "timeline", "acceleration", "critical-path"],
+  "difficulty": "intermediate",
+  "compatibility": "Claude Code v1.0+",
+  "lastUpdated": "2026-09-10"
+}
