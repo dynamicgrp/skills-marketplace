@@ -1,8 +1,6 @@
 ---
-name: Construction Timeline Analyzer
-description: Analyze project schedules, identify bottlenecks, and generate acceleration recommendations
-author: Dynamic Group
-version: 1.0.0
+name: construction-timeline
+description: Analyze construction project schedules and recommend acceleration. Use when the user asks to analyze a project schedule, find the critical path, identify schedule bottlenecks or delays, compress or accelerate a timeline, assess whether a deadline is achievable, calculate float or slack, or evaluate schedule risk on a construction, housing, disaster-recovery, or modular build.
 ---
 
 # Construction Timeline Analyzer Skill

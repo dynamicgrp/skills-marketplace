@@ -1,0 +1,32 @@
+{
+  "name": "dynamic-group",
+  "owner": {
+    "name": "Dynamic Group",
+    "url": "https://github.com/dynamicgrp"
+  },
+  "metadata": {
+    "description": "Internal Claude skills for Dynamic Group construction operations, project delivery, and business development.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "construction-tools",
+      "source": "./plugins/construction-tools",
+      "description": "Schedule analysis, bid review, and subcontractor assignment skills for construction project teams.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dynamic Group"
+      },
+      "homepage": "https://github.com/dynamicgrp/skills-marketplace",
+      "license": "UNLICENSED",
+      "category": "productivity",
+      "keywords": [
+        "construction",
+        "scheduling",
+        "bidding",
+        "project-management",
+        "subcontractors"
+      ]
+    }
+  ]
+}

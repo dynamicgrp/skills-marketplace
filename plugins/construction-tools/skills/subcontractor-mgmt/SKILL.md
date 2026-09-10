@@ -1,8 +1,6 @@
 ---
-name: Subcontractor Management Helper
-description: Track vendor capacity, identify conflicts, and recommend optimal subcontractor assignments
-author: Dynamic Group
-version: 1.0.0
+name: subcontractor-mgmt
+description: Assign subcontractors across concurrent construction projects. Use when the user asks which subcontractor or vendor to assign to a project, whether crews or trades are available for a date range, if there are scheduling conflicts between projects, how to allocate limited crew capacity, or which vendor best fits a given trade, location, and timeline.
 ---
 
 # Subcontractor Management Helper Skill

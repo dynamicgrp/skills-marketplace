@@ -1,48 +1,54 @@
 # Dynamic Group Skills Marketplace
 
-A centralized repository of Claude Code skills and automation workflows built for Dynamic Group's construction operations, project delivery, and business development teams.
+Internal Claude skills for Dynamic Group construction operations, project delivery, and business development.
 
-## What is a Skill?
+This is a **Claude Code plugin marketplace**. You add it once by URL and the skills show up inside Claude — no cloning, no copying files, no manual updates.
 
-A skill is a reusable, packaged Claude Code workflow that automates a specific task or process. Skills are:
-- **Modular**: Designed to be used independently or combined
-- **Documented**: Clear instructions on how and when to use them
-- **Tested**: Validated against real Dynamic Group workflows
-- **Maintainable**: Versioned and updated over time
+## Install
 
-## Featured Skills
+Run these two commands in Claude Code:
 
-### 🗓️ Construction Timeline Analyzer
-Analyze project schedules, identify bottlenecks, and generate acceleration recommendations. Perfect for schedule-critical disaster recovery and workforce housing projects.
-- **Category**: Project Management
-- **Difficulty**: Intermediate
-- [View Skill →](skills/construction-timeline)
+```
+/plugin marketplace add dynamicgrp/skills-marketplace
+/plugin install construction-tools@dynamic-group
+```
 
-### 📋 Project Bid Analyzer
-Break down RFQs and RFPs, identify scope gaps, flag compliance issues, and generate structured response checklists. Essential for business development and proposal teams.
-- **Category**: Business Development
-- **Difficulty**: Intermediate
-- [View Skill →](skills/project-bid-analyzer)
+That's it. Restart Claude Code and the skills are live.
 
-### 🔧 Subcontractor Management Helper
-Track vendor capacity and performance, identify scheduling conflicts, and recommend optimal subcontractor assignments.
-- **Category**: Operations
-- **Difficulty**: Beginner
-- [View Skill →](skills/subcontractor-mgmt)
+To browse everything available first, run `/plugin` and pick **Browse marketplaces**.
 
-## Quick Start
+## What's included
 
-See [INSTALLATION.md](INSTALLATION.md) for setup instructions.
+The `construction-tools` plugin bundles three skills. Claude invokes them automatically when your question matches — you don't have to call them by name.
 
-## Documentation
+| Skill | Invokes when you ask about |
+|---|---|
+| **construction-timeline** | Project schedules, critical path, bottlenecks, schedule compression, whether a deadline is achievable, float and slack, schedule risk |
+| **project-bid-analyzer** | RFQs and RFPs, scope gaps, compliance and contract risk (prevailing wage, bonding, liquidated damages), whether a budget or timeline is realistic, go/no-go bid decisions |
+| **subcontractor-mgmt** | Which sub to assign, crew and trade availability, scheduling conflicts across concurrent projects, crew capacity allocation |
 
-- **[INSTALLATION.md](INSTALLATION.md)** – How to install skills into Claude Code
-- **[CONTRIBUTING.md](CONTRIBUTING.md)** – How to create and submit new skills
-- **[docs/skill-template.md](docs/skill-template.md)** – Starter template for skill authors
-- **[docs/best-practices.md](docs/best-practices.md)** – Guidelines for writing maintainable skills
-- **[docs/faq.md](docs/faq.md)** – Frequently asked questions
+### Try it
+
+Once installed, just ask normally:
+
+> We're 3 months into a 60-unit modular job in NC and the customer moved the deadline up to 12 months. Factory is at capacity. What's realistic?
+
+> Here's the RFQ — 100 modular units, $12M, 9 months, prevailing wage, $2,500/day liquidated damages. Should we bid it?
+
+> Project C needs site prep starting Aug 15. ABC Site Prep is free, XYZ is booked through September. Who do we use?
+
+## Updating
+
+When skills are improved, pull the latest:
+
+```
+/plugin marketplace update dynamic-group
+```
+
+## Contributing a skill
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Short version: add a folder under `plugins/construction-tools/skills/`, write a `SKILL.md` with a trigger-rich `description`, open a PR.
 
 ---
 
-**Marketplace Version**: 1.0.0 (Beta)  
-**Last Updated**: 2026-09-10
+**Marketplace**: `dynamic-group` · **Plugin**: `construction-tools` v1.0.0

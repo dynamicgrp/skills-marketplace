@@ -1,67 +1,88 @@
-# Contributing Guide
+# Adding a Skill
 
-Thank you for contributing to the Dynamic Group Skills Marketplace!
-
-## Creating a Skill
-
-### 1. Use the Skill Template
-
-Copy [docs/skill-template.md](docs/skill-template.md) and customize it:
-
-```bash
-cp docs/skill-template.md skills/your-skill-name/SKILL.md
-```
-
-### 2. Structure Your Skill Directory
+## Where skills live
 
 ```
-skills/your-skill-name/
-├── SKILL.md              # Claude Code skill definition (required)
-├── README.md             # User-facing documentation (required)
-├── metadata.json         # Skill metadata (required)
-└── examples/
-    └── example-usage.md  # Usage examples (recommended)
+plugins/construction-tools/skills/<your-skill-name>/
+├── SKILL.md          # required
+├── examples/         # optional
+└── references/       # optional — files Claude reads on demand
 ```
 
-### 3. Write Documentation
+Folder name must be kebab-case and must match the `name` in the frontmatter.
 
-- **SKILL.md**: Claude instructions (what the skill does)
-- **README.md**: User guide with examples
-- **metadata.json**: Tags, difficulty, version, author
-- **examples/**: Real usage scenarios
+## Writing SKILL.md
 
-### 4. Test Your Skill
-
-Install locally and test with real data:
-
-```bash
-cp -r skills/your-skill-name ~/.claude/skills/
-claude code /reload
-/your-skill-name
-```
-
-### 5. Submit a Pull Request
-
-1. Fork the repository
-2. Add your skill folder
-3. Update `skills-catalog.json`
-4. Create a pull request with details
-
-## Quality Standards
-
-**Do's** ✅
-- Be specific to Dynamic Group's needs
-- Use real examples (anonymized)
-- Keep it focused – one main task per skill
-- Document edge cases and limitations
-- Test thoroughly before submitting
-
-**Don'ts** ❌
-- Don't duplicate existing skills
-- Don't be too generic
-- Don't skip examples
-- Don't forget limitations
-
+```markdown
+---
+name: your-skill-name
+description: What it does, in one clause. Use when the user asks to <trigger>, <trigger>, or <trigger>.
 ---
 
-**Version**: 1.0.0
+# Your Skill Name
+
+## Your Expertise
+What you know about this domain, specific to Dynamic Group.
+
+## How to Use This Skill
+What information to ask the user for.
+
+## Analysis Process
+Step-by-step what you do.
+
+## Output Format
+How you structure the response.
+
+## Important Guidelines
+Key principles, assumptions, and tradeoffs to surface.
+```
+
+### The description field is the whole ballgame
+
+Claude decides whether to load your skill by reading `description` and nothing else. A vague description means the skill never fires.
+
+**Bad** — never triggers:
+```yaml
+description: Helps with construction projects.
+```
+
+**Good** — fires on real questions:
+```yaml
+description: Analyze construction project schedules and recommend acceleration. Use when the user asks to analyze a project schedule, find the critical path, identify bottlenecks, compress a timeline, or assess whether a deadline is achievable.
+```
+
+Write it in third person, name the concrete situations, and include the words people actually use. Don't put `author` or `version` in skill frontmatter — those live in `plugin.json`.
+
+## Test before you PR
+
+```bash
+git clone https://github.com/dynamicgrp/skills-marketplace.git
+cd skills-marketplace
+```
+
+In Claude Code, add your local checkout as a marketplace and install from it:
+
+```
+/plugin marketplace add ./skills-marketplace
+/plugin install construction-tools@dynamic-group
+```
+
+Then ask a question your skill should catch and confirm it fires. Ask a question it *shouldn't* catch and confirm it stays quiet — over-triggering is as bad as under-triggering.
+
+## Bump the version
+
+Edit both files so existing users get the update instead of a cached copy:
+
+- `.claude-plugin/marketplace.json` → `plugins[0].version`
+- `plugins/construction-tools/.claude-plugin/plugin.json` → `version`
+
+## Open the PR
+
+Say what the skill does, what questions should trigger it, and what you tested.
+
+## Quality bar
+
+- One job per skill. If it does three things, it's three skills.
+- Specific to how Dynamic Group actually works — disaster recovery, workforce housing, modular, government contracting.
+- State limitations. What it won't do matters as much as what it will.
+- Surface tradeoffs rather than giving a single confident answer.

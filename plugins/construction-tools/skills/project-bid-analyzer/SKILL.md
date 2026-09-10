@@ -1,8 +1,6 @@
 ---
-name: Project Bid Analyzer
-description: Break down RFQs and RFPs, identify scope gaps, and generate response checklists
-author: Dynamic Group
-version: 1.0.0
+name: project-bid-analyzer
+description: Analyze construction bid requests and decide whether to pursue them. Use when the user shares an RFQ, RFP, ITB, or bid package and asks to review requirements, find scope gaps or ambiguities, flag compliance and contract risks (prevailing wage, bonding, liquidated damages, certifications), judge whether a budget or timeline is realistic, build a proposal response checklist, or make a go/no-go bidding decision.
 ---
 
 # Project Bid Analyzer Skill
