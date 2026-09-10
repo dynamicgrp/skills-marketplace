@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Internal Claude skills for Dynamic Group construction operations, project delivery, and business development.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "construction-tools",
       "source": "./plugins/construction-tools",
-      "description": "Schedule analysis, bid review, and subcontractor assignment skills for construction project teams.",
-      "version": "1.0.0",
+      "description": "Schedule analysis, bid review, subcontractor assignment, change orders, field report analysis, and draw requests for construction project teams.",
+      "version": "1.1.0",
       "author": {
         "name": "Dynamic Group"
       },
@@ -25,7 +25,10 @@
         "scheduling",
         "bidding",
         "project-management",
-        "subcontractors"
+        "subcontractors",
+        "change-orders",
+        "draw-requests",
+        "field-operations"
       ]
     }
   ]

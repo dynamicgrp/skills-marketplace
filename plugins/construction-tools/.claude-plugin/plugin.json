@@ -1,7 +1,7 @@
 {
   "name": "construction-tools",
-  "description": "Schedule analysis, bid review, and subcontractor assignment skills for construction project teams.",
-  "version": "1.0.0",
+  "description": "Schedule analysis, bid review, subcontractor assignment, change orders, field report analysis, and draw requests for construction project teams.",
+  "version": "1.1.0",
   "author": {
     "name": "Dynamic Group"
   },
