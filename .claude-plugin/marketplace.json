@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Shared Claude skills for Dynamic Group. One plugin, installed once, carrying every skill the company uses.",
-    "version": "3.0.0"
+    "version": "3.1.0"
   },
   "plugins": [
     {
       "name": "dynamic-skills",
       "source": "./plugins/dynamic-skills",
-      "description": "Shared Dynamic Group skills. Currently brand standards for color, typography, logo, layout, voice and tone; further skills are added to this same plugin.",
-      "version": "3.0.0",
+      "description": "Shared Dynamic Group skills: brand standards, and RFI drafting and review. Further skills are added to this same plugin.",
+      "version": "3.1.0",
       "author": {
         "name": "Dynamic Group"
       },
@@ -26,7 +26,9 @@
         "design-system",
         "voice-and-tone",
         "proposals",
-        "construction"
+        "construction",
+        "rfi",
+        "project-delivery"
       ]
     }
   ]
