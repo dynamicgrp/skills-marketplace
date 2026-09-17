@@ -7,9 +7,11 @@ This is a **Claude Code plugin marketplace**. You add it once by URL and the ski
 ## Install
 
 ```
-/plugin marketplace add dynamicgrp/skills-marketplace
+/plugin marketplace add https://github.com/dynamicgrp/skills-marketplace
 /plugin install dynamic-skills@skills-marketplace
 ```
+
+The shorthand `dynamicgrp/skills-marketplace` works in place of the full link.
 
 Restart Claude Code and it is live.
 
@@ -71,7 +73,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process. In short: add `plug
 
 ## Access
 
-This repo is private. `/plugin marketplace add` uses each person's own git auth, so teammates need read access on `dynamicgrp/skills-marketplace` or the add fails silently for them.
+This repo is public, so adding the marketplace needs no GitHub account and no invite. Anyone with the link can add it.
+
+That sets a rule for what belongs here: standards and craft, the things we would be comfortable with a client or a subcontractor reading. Brand, document conventions, general practice.
+
+Anything carrying competitive or client sensitive material does not go in this repo. Bid and no-bid criteria, pricing and contingency approach, how we win specific programs, subcontractor assessments, client specific knowledge. Those belong in a separate private marketplace, built the same way. Once a commit is public it stays public; forks and caches survive a repo being flipped back, so the rule is about what gets committed, not what can be removed later.
 
 ---
 
