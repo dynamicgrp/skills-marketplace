@@ -69,7 +69,13 @@ Run this after we add or change a skill. There is no second install step.
 
 Everything lives in one plugin so the company installs once. A new skill is a new folder inside it, not a new plugin.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process. In short: add `plugins/dynamic-skills/skills/<your-skill>/SKILL.md`, write a trigger-rich `description`, bump the version in both manifests, open a PR.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process. In short: add `plugins/dynamic-skills/skills/<your-skill>/SKILL.md`, write a trigger-rich `description`, open a PR.
+
+The version is bumped for you. CI validates every skill on the pull request and moves the plugin version when your change would otherwise reach nobody, because Claude caches by version and a missed bump is silent. Run the same checks locally first:
+
+```bash
+python3 .github/scripts/sync_skills.py --check
+```
 
 ## Access
 

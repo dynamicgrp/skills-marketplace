@@ -1,0 +1,58 @@
+name: Skills
+
+# Two failures this catches, both of which are silent without it:
+#   a skill whose frontmatter is wrong installs fine and never fires
+#   a skill added without a version bump never reaches anyone already installed
+
+on:
+  pull_request:
+    paths:
+      - 'plugins/**'
+      - '.claude-plugin/**'
+      - 'README.md'
+  push:
+    branches: [main]
+    paths:
+      - 'plugins/**'
+      - '.claude-plugin/**'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out the branch under review
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Make main available to compare against
+        run: git fetch origin main --depth=1
+
+      - name: Validate skills and sync the version
+        id: sync
+        run: |
+          # A pull request from this repo can be written to, so let the script
+          # fix the version. Anything else is read only and must already be correct.
+          if [ "${{ github.event_name }}" = "pull_request" ] && \
+             [ "${{ github.event.pull_request.head.repo.full_name }}" = "${{ github.repository }}" ]; then
+            python3 .github/scripts/sync_skills.py
+          else
+            python3 .github/scripts/sync_skills.py --check
+          fi
+
+      - name: Commit the version bump back to the branch
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing to write back."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .claude-plugin/marketplace.json "plugins/dynamic-skills/.claude-plugin/plugin.json"
+          git commit -m "Bump plugin version so this change reaches installed users"
+          git push origin HEAD:"${{ github.event.pull_request.head.ref }}"

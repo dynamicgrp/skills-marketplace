@@ -75,14 +75,24 @@ In Claude Code, add your local checkout as a marketplace and install from it:
 
 Then ask a question your skill should catch and confirm it fires. Ask a question it *shouldn't* catch and confirm it stays quiet — over-triggering is as bad as under-triggering.
 
-## Bump the version
+## The version is handled for you
 
-Teammates get a cached copy until the version changes, so this step is what actually ships your work.
+CI bumps the plugin version on your pull request when your change would otherwise reach nobody. You do not need to touch `marketplace.json` or `plugin.json`.
 
-Edit both files so existing users get the update instead of a cached copy:
+This matters because Claude caches an installed plugin by version. A new skill pushed without a bump reaches only people installing fresh, and everyone already set up keeps the old set with no error and no sign anything is missing. That is a bad failure to leave to human memory, so it is automated.
 
-- `.claude-plugin/marketplace.json` → `plugins[0].version`
-- `plugins/dynamic-skills/.claude-plugin/plugin.json` → `version`
+Bump the minor or major version by hand only when you want to signal something deliberate. CI leaves your value alone if you have already moved it past main.
+
+## Check before you push
+
+```bash
+python3 .github/scripts/sync_skills.py --check
+```
+
+This runs exactly what CI runs. It catches the failures that are otherwise silent: frontmatter that does not parse, a `name` that does not match the directory, a description too vague to trigger on, `version` or `author` left in the frontmatter where they do not belong, a stub body, and any skill missing from the README table.
+
+A skill that fails these installs cleanly and then never fires, which is why they are errors rather than warnings.
+
 
 ## Open the PR
 
