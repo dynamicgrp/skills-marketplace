@@ -3,7 +3,7 @@
 ## Where skills live
 
 ```
-plugins/construction-tools/skills/<your-skill-name>/
+plugins/dynamic-brand/skills/<your-skill-name>/
 ├── SKILL.md          # required
 ├── examples/         # optional
 └── references/       # optional — files Claude reads on demand
@@ -64,7 +64,7 @@ In Claude Code, add your local checkout as a marketplace and install from it:
 
 ```
 /plugin marketplace add ./skills-marketplace
-/plugin install construction-tools@dynamic-group
+/plugin install dynamic-brand@dynamic-group
 ```
 
 Then ask a question your skill should catch and confirm it fires. Ask a question it *shouldn't* catch and confirm it stays quiet — over-triggering is as bad as under-triggering.
@@ -74,7 +74,7 @@ Then ask a question your skill should catch and confirm it fires. Ask a question
 Edit both files so existing users get the update instead of a cached copy:
 
 - `.claude-plugin/marketplace.json` → `plugins[0].version`
-- `plugins/construction-tools/.claude-plugin/plugin.json` → `version`
+- `plugins/dynamic-brand/.claude-plugin/plugin.json` → `version`
 
 ## Open the PR
 

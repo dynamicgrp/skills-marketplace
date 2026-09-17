@@ -1,0 +1,191 @@
+/* Dynamic Group design tokens
+   Source: Dynamic Group Brand Guide, September 2026
+   Page geometry is 816 x 1056px, US Letter at 96dpi. The pt sizes in the
+   brand guide convert to whole px at 96dpi, so the system is px native:
+   1pt = 1.3333px. Both are given below. */
+
+:root {
+  /* Primary */
+  --dg-orange:        #F26F21;  /* rules, ticks, bullets, card top borders, active bars */
+  --dg-charcoal:      #54565A;  /* table header bands, small caps, chrome */
+
+  /* Accent */
+  --dg-orange-deep:   #D2570F;  /* numerals, links, emphasis, labels */
+  --dg-amber:         #F5A623;  /* cover gradients, alternate schedule bars */
+
+  /* Neutral ink */
+  --dg-ink-heading:   #3C3D41;
+  --dg-ink-body:      #2C2D31;
+  --dg-ink-muted:     #6E7075;
+
+  /* Surfaces */
+  --dg-paper:         #FFFFFF;
+  --dg-panel:         #F5F4F1;
+  --dg-panel-2:       #EEEDE9;
+  --dg-viewport:      #E9E9E6;
+
+  /* Lines */
+  --dg-border:        #D8D9DB;
+  --dg-hairline:      #E7E8E9;
+
+  /* Families */
+  --dg-font-display:  "Barlow Semi Condensed", "Barlow", system-ui, sans-serif;
+  --dg-font-body:     "Source Sans 3", "Source Sans Pro", system-ui, sans-serif;
+
+  /* Type scale, px at 96dpi (pt equivalent in comment) */
+  --dg-size-divider:  54px;   /* 40.5pt  section divider title */
+  --dg-size-cover:    45px;   /* 33.75pt cover title */
+  --dg-size-section:  30px;   /* 22.5pt  section heading */
+  --dg-size-sub:      18px;   /* 13.5pt  subsection heading */
+  --dg-size-kicker:   12px;   /* 9pt     kicker, eyebrow */
+  --dg-size-lead:     16.5px; /* 12.4pt  lead paragraph */
+  --dg-size-body:     15px;   /* 11.25pt body, table cell */
+  --dg-size-dense:    13px;   /* 9.75pt  dense table, caption */
+  --dg-size-chrome:   11px;   /* 8.25pt  footer chrome, legend */
+
+  --dg-track-kicker:  .2em;
+
+  /* Geometry */
+  --dg-page-w:        816px;
+  --dg-page-h:        1056px;
+  --dg-pad:           60px;   /* side padding on content pages */
+  --dg-pad-cover:     56px;   /* side padding on covers and dividers */
+  --dg-radius:        2px;    /* house radius; tables and matrices stay square */
+  --dg-gutter:        22px;
+
+  /* Depth: solid fills, hairlines and soft shadows only. No glass, no blur. */
+  --dg-shadow-card:   0 1px 3px rgba(28,29,32,.06);
+  --dg-shadow-figure: 0 3px 9px rgba(28,29,32,.13);
+  --dg-shadow-page:   0 6px 26px rgba(20,20,22,.18);
+}
+
+/* ---------- Base ---------- */
+
+body {
+  background: var(--dg-viewport);
+  color: var(--dg-ink-body);
+  font-family: var(--dg-font-body);
+  font-size: var(--dg-size-body);
+  line-height: 1.5;
+}
+
+.dg-page {
+  width: var(--dg-page-w);
+  min-height: var(--dg-page-h);
+  padding: var(--dg-pad);
+  margin: 0 auto;
+  background: var(--dg-paper);
+  box-shadow: var(--dg-shadow-page);
+}
+
+/* ---------- Type ---------- */
+
+h1, h2, h3, .dg-kicker, .dg-chrome, th {
+  font-family: var(--dg-font-display);
+  text-transform: uppercase;
+  color: var(--dg-ink-heading);
+}
+
+h1 { font-size: var(--dg-size-cover);   }
+h2 { font-size: var(--dg-size-section); }
+h3 { font-size: var(--dg-size-sub);     }
+
+.dg-divider-title { font-family: var(--dg-font-display); font-size: var(--dg-size-divider); text-transform: uppercase; }
+.dg-lead    { font-size: var(--dg-size-lead); }
+.dg-caption { font-size: var(--dg-size-dense); color: var(--dg-ink-muted); text-transform: uppercase; }
+.dg-chrome  { font-size: var(--dg-size-chrome); color: var(--dg-charcoal); }
+
+/* Emphasis inside body copy: bold or deep orange. Never an all caps run. */
+.dg-em     { color: var(--dg-orange-deep); font-weight: 600; }
+.dg-metric { color: var(--dg-orange-deep); font-family: var(--dg-font-display); font-size: var(--dg-size-section); }
+
+/* ---------- Motifs: the short orange rule ---------- */
+
+.dg-kicker {
+  font-size: var(--dg-size-kicker);
+  letter-spacing: var(--dg-track-kicker);
+  color: var(--dg-charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dg-kicker::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--dg-orange);
+  flex: none;
+}
+
+.dg-section-rule { height: 6px; width: 64px; background: var(--dg-orange); }
+.dg-header       { border-bottom: 2px solid var(--dg-orange); }
+.dg-card         { border-top: 3px solid var(--dg-orange); background: var(--dg-panel); padding: 18px; border-radius: var(--dg-radius); box-shadow: var(--dg-shadow-card); }
+.dg-callout      { border-left: 4px solid var(--dg-orange); background: var(--dg-panel); padding: 14px 18px; }
+.dg-figure       { box-shadow: var(--dg-shadow-figure); border-radius: var(--dg-radius); }
+
+/* ---------- Tables ---------- */
+
+table { border-collapse: collapse; width: 100%; border-radius: 0; }
+th {
+  background: var(--dg-charcoal);
+  color: var(--dg-paper);
+  font-size: var(--dg-size-kicker);
+  letter-spacing: .08em;
+  text-align: left;
+  padding: 8px 10px;
+}
+td { border-bottom: 1px solid var(--dg-hairline); padding: 8px 10px; }
+table, .dg-matrix { border: 1px solid var(--dg-border); }
+
+/* ---------- Lists: one marker per page ---------- */
+
+.bul { list-style: none; padding-left: 0; }
+.bul > li { position: relative; padding-left: 18px; margin-bottom: 6px; }
+
+/* Diamond, the house marker */
+.bul > li::before {
+  content: "";
+  position: absolute;
+  left: 2px; top: .45em;
+  width: 6px; height: 6px;
+  background: var(--dg-orange);
+  transform: rotate(45deg);
+}
+
+/* Dash */
+.bul--dash > li::before {
+  width: 9px; height: 2px;
+  transform: none;
+  top: .62em;
+}
+
+/* Dot */
+.bul--dot > li::before {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  transform: none;
+}
+
+/* Icon: 15px single weight line, inherits deep orange via currentColor.
+   Never filled, never duotone, never an icon font, never emoji. */
+.bul--icon > li { padding-left: 24px; color: inherit; }
+.bul--icon > li::before { content: none; }
+.bul--icon > li > svg {
+  position: absolute;
+  left: 0; top: .15em;
+  width: 15px; height: 15px;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  fill: none;
+  color: var(--dg-orange-deep);
+}
+
+/* ---------- Cover scrim: the only permitted transparency ---------- */
+
+.dg-cover { position: relative; color: var(--dg-paper); padding: var(--dg-pad-cover); }
+.dg-cover::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(28,29,32,.25) 0%, rgba(28,29,32,.82) 100%);
+}
+.dg-cover > * { position: relative; z-index: 1; }

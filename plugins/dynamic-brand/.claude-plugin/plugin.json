@@ -1,0 +1,18 @@
+{
+  "name": "dynamic-brand",
+  "description": "Dynamic Group brand standards: color, typography, logo, layout, list markers, voice and tone, applied automatically to anything produced for the company.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Dynamic Group"
+  },
+  "homepage": "https://github.com/dynamicgrp/skills-marketplace",
+  "repository": "https://github.com/dynamicgrp/skills-marketplace",
+  "license": "UNLICENSED",
+  "keywords": [
+    "brand",
+    "design-system",
+    "voice-and-tone",
+    "proposals",
+    "style-guide"
+  ]
+}

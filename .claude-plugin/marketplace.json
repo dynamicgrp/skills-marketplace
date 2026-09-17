@@ -5,15 +5,15 @@
     "url": "https://github.com/dynamicgrp"
   },
   "metadata": {
-    "description": "Internal Claude skills for Dynamic Group construction operations, project delivery, and business development.",
-    "version": "1.1.0"
+    "description": "Internal Claude skills for Dynamic Group. Brand standards for every document, deck and communication the company produces.",
+    "version": "2.0.0"
   },
   "plugins": [
     {
-      "name": "construction-tools",
-      "source": "./plugins/construction-tools",
-      "description": "Schedule analysis, bid review, subcontractor assignment, change orders, field report analysis, and draw requests for construction project teams.",
-      "version": "1.1.0",
+      "name": "dynamic-brand",
+      "source": "./plugins/dynamic-brand",
+      "description": "Dynamic Group brand standards: color, typography, logo, layout, list markers, voice and tone, applied automatically to anything produced for the company.",
+      "version": "2.0.0",
       "author": {
         "name": "Dynamic Group"
       },
@@ -21,14 +21,12 @@
       "license": "UNLICENSED",
       "category": "productivity",
       "keywords": [
-        "construction",
-        "scheduling",
-        "bidding",
-        "project-management",
-        "subcontractors",
-        "change-orders",
-        "draw-requests",
-        "field-operations"
+        "brand",
+        "design-system",
+        "voice-and-tone",
+        "proposals",
+        "typography",
+        "style-guide"
       ]
     }
   ]

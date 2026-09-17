@@ -1,25 +1,23 @@
 # Dynamic Group Skills Marketplace
 
-Internal Claude skills for Dynamic Group construction operations, project delivery, and business development.
+Internal Claude skills for Dynamic Group.
 
-This is a **Claude Code plugin marketplace**. You add it once by URL and the skills show up inside Claude — no cloning, no copying files, no manual updates.
+This is a **Claude Code plugin marketplace**. You add it once by URL and the skills work inside Claude, with no cloning and no manual updates.
 
 ## Install
 
-Run these two commands in Claude Code:
-
 ```
 /plugin marketplace add dynamicgrp/skills-marketplace
-/plugin install construction-tools@dynamic-group
+/plugin install dynamic-brand@dynamic-group
 ```
 
-That's it. Restart Claude Code and the skills are live.
+Restart Claude Code and it is live.
 
-To browse before installing, run `/plugin` with nothing after it and tab over to **Marketplaces**.
+If you installed the earlier `construction-tools` plugin, remove it first with `/plugin uninstall construction-tools@dynamic-group`. It has been replaced.
 
 ### Adding it without typing commands
 
-Put this in `~/.claude/settings.json` for yourself, or commit it as `.claude/settings.json` in a team repo:
+Put this in `~/.claude/settings.json`, or commit it as `.claude/settings.json` in a team repo:
 
 ```json
 {
@@ -29,36 +27,41 @@ Put this in `~/.claude/settings.json` for yourself, or commit it as `.claude/set
       "autoUpdate": true
     }
   },
-  "enabledPlugins": { "construction-tools@dynamic-group": true }
+  "enabledPlugins": { "dynamic-brand@dynamic-group": true }
 }
 ```
 
-This registers the marketplace automatically. Each person still runs `/plugin install construction-tools@dynamic-group` once, because the plugin lives in an external repo.
+This registers the marketplace automatically. Each person still runs the install command once, because the plugin lives in an external repo.
 
-## What's included
+## What it does
 
-The `construction-tools` plugin bundles six skills. Claude invokes them automatically when your question matches — you never call them by name.
+The `dynamic-brand` skill carries the Dynamic Group Brand Guide, September 2026. Claude applies it without being asked whenever it produces something for Dynamic: a proposal, report, qualifications package, client email, web page, slide or social post.
 
-| Skill | Fires when you ask about |
+It covers:
+
+| Area | What it settles |
 |---|---|
-| **construction-timeline** | Project schedules, critical path, bottlenecks, schedule compression, whether a deadline is achievable, float and slack, schedule risk |
-| **project-bid-analyzer** | RFQs and RFPs, scope gaps, compliance and contract risk (prevailing wage, bonding, liquidated damages), whether a budget or timeline is realistic, go/no-go bid decisions |
-| **subcontractor-mgmt** | Which sub to assign, crew and trade availability, scheduling conflicts across concurrent projects, crew capacity allocation |
-| **change-order-analyzer** | Whether a change is compensable or in-scope, change order pricing, time impact, notice deadlines, responding to a denial, documenting a claim |
-| **field-report-analyzer** | Daily reports and field logs, manpower trends, which trades are slipping, recurring site issues, what's really driving delays, what to raise with a super |
-| **draw-request-builder** | Pay applications and draws, percent complete by line, schedule of values, lien waiver backup, retainage, why a draw was rejected or short-paid |
+| Color | Dynamic Orange `#F26F21`, Dynamic Charcoal `#54565A`, the accents, inks, surfaces and line weights. No blues, no purples, no gradients but the cover scrim. |
+| Typography | Barlow Semi Condensed for headings and chrome, ALL CAPS. Source Sans 3 for body. The full nine step scale with sizes and casing. |
+| Voice | First person plural. Dynamic Group then Dynamic. Never the firm or its. Client addressed by title. No em dashes, no emoji, no exclamation points. |
+| Logo | Lockup and cube, sizing, clear space, placement, and the four things never to do to it. |
+| Layout | 816 by 1056px page, the orange rule motifs, padding, radius, borders and shadows. |
+| Lists | Four markers, one per page, and what each is for. |
+| Imagery | Documentary site and crew photography, caption format, cover scrim treatment. |
+
+Two bundled references Claude reads when the task needs them: `tokens.css` with every value as CSS custom properties and the components built, and `document-patterns.md` with cover, divider, content and table structures plus the ReportLab and font sourcing notes.
 
 ### Try it
 
-Ask normally — no slash command:
+Ask normally. No slash command.
 
-> We're 3 months into a 60-unit modular job in NC and the customer moved the deadline up to 12 months. Factory is at capacity. What's realistic?
+> Draft the cover letter for the Seminole housing RFQ.
 
-> Owner's rep verbally told us to relocate the utility run two weeks ago. We already did the work. Can we bill it?
+> Build me an HTML page template for a qualifications package.
 
-> Here are six weeks of daily reports. Electrical headcount keeps dropping and I don't know why.
+> What is our orange?
 
-> Draw 7 got kicked back by the lender and they won't say what's wrong. Here's the package.
+> Review this paragraph against our brand standards.
 
 ## Updating
 
@@ -66,11 +69,9 @@ Ask normally — no slash command:
 /plugin marketplace update dynamic-group
 ```
 
-Skills are improved in place, so pull periodically.
+## Contributing
 
-## Contributing a skill
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). Add a folder under `plugins/construction-tools/skills/`, write a `SKILL.md` with a trigger-rich `description`, bump the version in both manifests, open a PR.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Access
 
@@ -78,4 +79,4 @@ This repo is private. `/plugin marketplace add` uses each person's own git auth,
 
 ---
 
-**Marketplace**: `dynamic-group` · **Plugin**: `construction-tools` v1.1.0 · 6 skills
+**Marketplace**: `dynamic-group` · **Plugin**: `dynamic-brand` v2.0.0
