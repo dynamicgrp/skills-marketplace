@@ -1,12 +1,12 @@
 {
-  "name": "dynamic-group",
+  "name": "dynamic-marketplace",
   "owner": {
     "name": "Dynamic Group",
     "url": "https://github.com/dynamicgrp"
   },
   "metadata": {
     "description": "Internal Claude skills for Dynamic Group. Brand standards for every document, deck and communication the company produces.",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {

@@ -8,12 +8,21 @@ This is a **Claude Code plugin marketplace**. You add it once by URL and the ski
 
 ```
 /plugin marketplace add dynamicgrp/skills-marketplace
-/plugin install dynamic-brand@dynamic-group
+/plugin install dynamic-brand@dynamic-marketplace
 ```
 
 Restart Claude Code and it is live.
 
-If you installed the earlier `construction-tools` plugin, remove it first with `/plugin uninstall construction-tools@dynamic-group`. It has been replaced.
+### If you added this before
+
+The marketplace was previously named `dynamic-group` and the plugin `construction-tools`. Both have changed, so remove the old entries and add them again:
+
+```
+/plugin uninstall construction-tools@dynamic-group
+/plugin marketplace remove dynamic-group
+/plugin marketplace add dynamicgrp/skills-marketplace
+/plugin install dynamic-brand@dynamic-marketplace
+```
 
 ### Adding it without typing commands
 
@@ -22,12 +31,12 @@ Put this in `~/.claude/settings.json`, or commit it as `.claude/settings.json` i
 ```json
 {
   "extraKnownMarketplaces": {
-    "dynamic-group": {
+    "dynamic-marketplace": {
       "source": { "source": "github", "repo": "dynamicgrp/skills-marketplace" },
       "autoUpdate": true
     }
   },
-  "enabledPlugins": { "dynamic-brand@dynamic-group": true }
+  "enabledPlugins": { "dynamic-brand@dynamic-marketplace": true }
 }
 ```
 
@@ -66,7 +75,7 @@ Ask normally. No slash command.
 ## Updating
 
 ```
-/plugin marketplace update dynamic-group
+/plugin marketplace update dynamic-marketplace
 ```
 
 ## Contributing
@@ -79,4 +88,4 @@ This repo is private. `/plugin marketplace add` uses each person's own git auth,
 
 ---
 
-**Marketplace**: `dynamic-group` · **Plugin**: `dynamic-brand` v2.0.0
+**Marketplace**: `dynamic-marketplace` · **Plugin**: `dynamic-brand` v2.0.0

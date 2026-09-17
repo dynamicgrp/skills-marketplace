@@ -64,7 +64,7 @@ In Claude Code, add your local checkout as a marketplace and install from it:
 
 ```
 /plugin marketplace add ./skills-marketplace
-/plugin install dynamic-brand@dynamic-group
+/plugin install dynamic-brand@dynamic-marketplace
 ```
 
 Then ask a question your skill should catch and confirm it fires. Ask a question it *shouldn't* catch and confirm it stays quiet — over-triggering is as bad as under-triggering.
