@@ -1,9 +1,15 @@
 # Adding a Skill
 
+## One plugin, many skills
+
+Everything lives inside a single plugin, `dynamic-skills`. That is deliberate. The company installs once, and every skill we add afterwards reaches people through `/plugin marketplace update skills-marketplace` with no second install and no new command to circulate.
+
+So a new skill is a new folder inside the existing plugin, never a new plugin. Only split out a second plugin if a set of skills is genuinely for one team and would be noise for everyone else, and raise that before building it.
+
 ## Where skills live
 
 ```
-plugins/dynamic-brand/skills/<your-skill-name>/
+plugins/dynamic-skills/skills/<your-skill-name>/
 ├── SKILL.md          # required
 ├── examples/         # optional
 └── references/       # optional — files Claude reads on demand
@@ -64,17 +70,19 @@ In Claude Code, add your local checkout as a marketplace and install from it:
 
 ```
 /plugin marketplace add ./skills-marketplace
-/plugin install dynamic-brand@dynamic-marketplace
+/plugin install dynamic-skills@skills-marketplace
 ```
 
 Then ask a question your skill should catch and confirm it fires. Ask a question it *shouldn't* catch and confirm it stays quiet — over-triggering is as bad as under-triggering.
 
 ## Bump the version
 
+Teammates get a cached copy until the version changes, so this step is what actually ships your work.
+
 Edit both files so existing users get the update instead of a cached copy:
 
 - `.claude-plugin/marketplace.json` → `plugins[0].version`
-- `plugins/dynamic-brand/.claude-plugin/plugin.json` → `version`
+- `plugins/dynamic-skills/.claude-plugin/plugin.json` → `version`
 
 ## Open the PR
 

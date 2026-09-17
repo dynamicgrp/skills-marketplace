@@ -1,7 +1,7 @@
 {
-  "name": "dynamic-brand",
-  "description": "Dynamic Group brand standards: color, typography, logo, layout, list markers, voice and tone, applied automatically to anything produced for the company.",
-  "version": "2.0.0",
+  "name": "dynamic-skills",
+  "description": "Shared Dynamic Group skills. Currently brand standards for color, typography, logo, layout, voice and tone; further skills are added to this same plugin.",
+  "version": "3.0.0",
   "author": {
     "name": "Dynamic Group"
   },
@@ -9,10 +9,10 @@
   "repository": "https://github.com/dynamicgrp/skills-marketplace",
   "license": "UNLICENSED",
   "keywords": [
+    "dynamic-group",
     "brand",
     "design-system",
-    "voice-and-tone",
     "proposals",
-    "style-guide"
+    "construction"
   ]
 }
