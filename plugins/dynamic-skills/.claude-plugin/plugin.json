@@ -1,7 +1,7 @@
 {
   "name": "dynamic-skills",
-  "description": "Shared Dynamic Group skills: brand standards, and RFI drafting and review. Further skills are added to this same plugin.",
-  "version": "3.1.0",
+  "description": "Shared Dynamic Group skills. Currently brand standards for color, typography, logo, layout, voice and tone; further skills are added to this same plugin.",
+  "version": "3.2.0",
   "author": {
     "name": "Dynamic Group"
   },
@@ -13,8 +13,6 @@
     "brand",
     "design-system",
     "proposals",
-    "construction",
-    "rfi",
-    "project-delivery"
+    "construction"
   ]
 }

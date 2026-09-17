@@ -53,7 +53,6 @@ This registers the marketplace. Each person still runs the install command once,
 | Skill | Fires when you ask about |
 |---|---|
 | `dynamic-brand` | Anything produced for Dynamic: proposals, reports, qualifications, client email, web pages, slides, social. Our colors, type scale, logo rules, layout motifs, list markers, voice and tone. Also answers direct questions about the standard, and reviews existing material against it. |
-| `rfi-writer` | Drafting an RFI to an owner, architect or engineer. Unclear, conflicting or missing drawings and specs. Reviewing a received response for whether it actually answers. Tracking turnaround against contract response times. |
 
 Skills are invoked automatically when a question matches. Nobody types a skill name.
 
@@ -87,4 +86,4 @@ Anything carrying competitive or client sensitive material does not go in this r
 
 ---
 
-**Marketplace**: `skills-marketplace` · **Plugin**: `dynamic-skills` v3.1.0
+**Marketplace**: `skills-marketplace` · **Plugin**: `dynamic-skills` v3.2.0
